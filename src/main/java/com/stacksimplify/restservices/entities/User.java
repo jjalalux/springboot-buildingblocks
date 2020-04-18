@@ -1,12 +1,17 @@
 package com.stacksimplify.restservices.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 /**
  * @author ali.Moutchou
@@ -39,6 +44,11 @@ public class User {
 	
 	@Column(name = "ssn",length = 50, nullable = false, unique = true)
 	private String ssn;
+
+	@OneToMany(mappedBy = "user")
+//	@JsonView(Views.Internal.class)
+	private List<Order> orders;
+
 
 	// Constructor
 	public User() {
@@ -113,6 +123,14 @@ public class User {
 	}
 
 	
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
