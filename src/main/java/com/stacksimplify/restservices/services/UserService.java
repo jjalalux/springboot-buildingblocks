@@ -52,7 +52,7 @@ public class UserService {
 		if (!user.isPresent())
 			throw new UserNotFoundException("User Not Found in the system");
 
-		return null;
+		return user;
 	}
 
 	/**

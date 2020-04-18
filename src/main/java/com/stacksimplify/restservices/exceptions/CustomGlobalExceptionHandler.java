@@ -44,7 +44,7 @@ public class CustomGlobalExceptionHandler extends ResponseEntityExceptionHandler
 	@ExceptionHandler(UserNameNotFoundException.class)
 	public final ResponseEntity<Object> handleUserNameNotFoundException(UserNameNotFoundException ex,
 			WebRequest request) {
-		CustomErrorDetails customErrorDetails = new CustomErrorDetails(new Date(), ex.getMessage(),
+		CustomErrorDetails customErrorDetails = new CustomErrorDetails(new Date(), "Got it !!!!!! => "+  ex.getMessage(),
 				request.getDescription(false));
 
 		return new ResponseEntity<>(customErrorDetails, HttpStatus.NOT_FOUND);

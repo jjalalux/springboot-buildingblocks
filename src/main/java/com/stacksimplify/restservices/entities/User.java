@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * @author ali.Moutchou
@@ -18,9 +20,11 @@ public class User {
 	@GeneratedValue
 	private Long id;
 	
+	@NotNull(message = "Username is mandatory field, Please provide Username")
 	@Column(name = "USER_NAME",length = 50, nullable = false, unique = true)
 	private String username;
 	
+	@Size(min = 2,message = "FirstName should be at least 2 caracters")
 	@Column(name = "FIRST_NAME",length = 50, nullable = false)
 	private String firstname;
 	
